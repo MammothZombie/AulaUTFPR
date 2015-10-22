@@ -23,6 +23,8 @@ public class Application {
         Dao dao = new PessoaDaoArrayList();
         Dao d = new PessoaDaoVetor();
         
+        System.out.println("Bem vindo");
+        
         d.adicionar(joao);
         d.adicionar(jose);
         d.adicionar(maria);
