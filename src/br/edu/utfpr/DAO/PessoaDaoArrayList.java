@@ -3,48 +3,45 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DAO;
+package br.edu.utfpr.DAO;
 
-import Modelo.Pessoa;
+import br.edu.utfpr.Modelo.Pessoa;
+import java.util.ArrayList;
 
 /**
  *
  * @author UTFPR
  */
-public class PessoaDaoVetor implements Dao{
+public class PessoaDaoArrayList implements Dao{
     
-    private Pessoa lista[];
-    private int i;
+    private ArrayList<Pessoa> lista;
 
-    public PessoaDaoVetor() {
-        lista = new Pessoa[5];
-        i = 0;
+    public PessoaDaoArrayList() {
+        lista = new ArrayList<>();
     }
     
     
 
     @Override
     public void adicionar(Pessoa p) {
-        lista[i] = p;
-        i++;
+        lista.add(p);
         System.out.println("A Pessoa \"" + p.getNome() + "\" foi adicionada");
-        
     }
 
     @Override
     public void remover(Pessoa p) {
-        //lista[i] = 
-        System.out.println("A Pessoa \"" + p.getNome() + "\" foi removida"); 
+        lista.remove(p);
+        System.out.println("A Pessoa \"" + p.getNome() + "\" foi removida");
+        
     }
 
     @Override
     public void listarTudo() {
         System.out.println("--Inicio--");
-        for (i=0; i<5; i++){
-            System.out.println("V["+ i +"] = " + lista[i]);
+        for (Pessoa elementoDaLista : lista){
+            System.out.println(elementoDaLista);
         }
         System.out.println("--Final--");
-        System.out.println("Pessoas adicionadas: " + i);
         
     }
     

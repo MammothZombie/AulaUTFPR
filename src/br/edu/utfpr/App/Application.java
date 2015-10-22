@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package App;
+package br.edu.utfpr.App;
 
-import DAO.Dao;
-import DAO.PessoaDaoArrayList;
-import DAO.PessoaDaoVetor;
-import Modelo.Pessoa;
+import br.edu.utfpr.DAO.Dao;
+import br.edu.utfpr.DAO.PessoaDaoArrayList;
+import br.edu.utfpr.DAO.PessoaDaoVetor;
+import br.edu.utfpr.Modelo.Pessoa;
 
 /**
  *
