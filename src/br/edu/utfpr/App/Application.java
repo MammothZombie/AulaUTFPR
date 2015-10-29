@@ -24,11 +24,16 @@ public class Application {
         
         Dao dao = new PessoaDaoDerby();
         
-//        d.adicionar(joao);
+        dao.remover(jose);
+        dao.remover(joao);
+        dao.remover(maria);
+//        dao.adicionar(joao);
+//        dao.adicionar(jose);
+//        dao.adicionar(maria);
 //        d.adicionar(jose);
 //        d.adicionar(maria);
 //        
-//        d.listarTudo();
+        dao.listarTudo();
 //        
 //        System.out.println("\n\nVamos remover...");
 //        //d.remover(jose);

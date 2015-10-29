@@ -8,6 +8,7 @@ package br.edu.utfpr.DAO;
 import br.edu.utfpr.Modelo.Pessoa;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -29,6 +30,7 @@ public class PessoaDaoDerby implements Dao{
         try {
             Connection con = DriverManager.getConnection(url, username, password);
             stat = con.createStatement();
+            System.out.println("Conexão estabelecida");
         } catch (SQLException se) {
             System.out.println("Mensagem: " + se.getMessage());
         }
@@ -39,14 +41,44 @@ public class PessoaDaoDerby implements Dao{
 
     @Override
     public void adicionar(Pessoa p) {
+        String instrucao = "INSERT INTO PESSOA (NOME, SOBRENOME,IDADE) VALUES(" + "'" + p.getNome() + "'" + "," + "'" +  p.getSobrenome() + "'" + "," + p.getIdade() + ")";
+        System.out.println(instrucao);
+        
+        try {
+            stat.executeUpdate(instrucao);
+        } catch (Exception se) {
+            System.out.println("Mensagem: " + se.getMessage());
+        }
     }
 
     @Override
     public void remover(Pessoa p) {
+        String instrucao = "DELETE FROM PESSOA WHERE NOME = " + "'" + p.getNome() + "'";
+        System.out.println(instrucao);
+        
+        try {
+            stat.executeUpdate(instrucao);
+        } catch (Exception se) {
+            System.out.println("Mensagem: " + se.getMessage());
+        }
     }
 
     @Override
     public void listarTudo() {
+        String instrucao = "SELECT * FROM PESSOA";
+        System.out.println(instrucao);
+        
+        try {
+            ResultSet rs = stat.executeQuery(instrucao);
+            
+            while (rs.next()) {
+                System.out.println("Nome: " + rs.getString("NOME") + "  Sobrenome: " + rs.getString("SOBRENOME") + "  Idade: " + rs.getString("IDADE") );
+                
+            }
+            
+        } catch (Exception se) {
+            System.out.println("Mensagem de erro: " + se.getMessage());
+        }
     }
     
     
